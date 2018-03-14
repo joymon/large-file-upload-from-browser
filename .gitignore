@@ -1,0 +1,13 @@
+*.suo
+
+*.mswwsettings
+
+/packages/*
+bin
+obj
+*.user
+*.pubxml
+Uploads
+/.vs
+/LargeFileUpload.Web/App_Data/PrDCOldApp.Web.Models.ImageEntryContext_log.ldf
+/LargeFileUpload.Web/App_Data/PrDCOldApp.Web.Models.ImageEntryContext.mdf
