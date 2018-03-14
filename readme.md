@@ -14,11 +14,11 @@ A large file uploading demo which uses below techniques.
 # Technologies & Languages used in demo
 
 - Client side
- - JavaScript (Not used TypeScript to have basic understanding than the language distractions)
- - CSS
- - HTML5
+  * JavaScript (Not used TypeScript to have basic understanding than the language distractions)
+  - CSS
+  - HTML5
 - Server side
- - ASP.Net
+  - ASP.Net
   - WebAPI
   
 # Related blog posts
