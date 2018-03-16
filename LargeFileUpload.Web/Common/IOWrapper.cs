@@ -16,7 +16,12 @@ namespace PrDCOldApp.Web
 
         internal static void DeleteFileFromUploads(string file)
         {
-            File.Delete(MapPath(Configurations.UploadsFolder + file));
+            File.Delete(Path.Combine(Configurations.UploadsFolder , file));
+        }
+
+        internal static void CreateFolderIfNotExists(string path)
+        {
+            Directory.CreateDirectory(path);
         }
     }
 }

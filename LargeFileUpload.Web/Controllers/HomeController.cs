@@ -25,7 +25,7 @@ namespace PrDCOldApp.Web.Controllers
         public ActionResult Index()
         {
             List<ImageEntry> model = new List<ImageEntry>();
-            foreach (FileInfo f in new DirectoryInfo(IOWrapper.MapPath(Configurations.UploadsFolder)).GetFiles())
+            foreach (FileInfo f in new DirectoryInfo(Configurations.UploadsFolder).GetFiles())
             {
                 model.Add(new ImageEntry() { Path = f.Name, Published = f.CreationTimeUtc });
             }
