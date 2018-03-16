@@ -1,14 +1,14 @@
-﻿function readSyncInWorkerAndSendviaWebAPI(file) {
+﻿function readAsyncAndSendAsMultiPartFormDataviaWebAPI(file) {
 
     $.get(uploadConfigurations.rootUrl + "/api/upload/new", (data, status) => {
         //alert(data);
-        uploadFile(file, data);
+        UploadFile(file, data);
     }
     );
 }
 
-function uploadFile(file, id) {
-    console.time("upload - readSyncInWorkerAndSendviaWebAPI");
+function UploadFile(file,id) {
+    console.time("upload - readAsyncAndSendAsMultiPartFormDataviaWebAPI");
     // create array to store the buffer chunks
     var FileChunk = [];
     // the file object itself that we will work with
@@ -33,14 +33,14 @@ function uploadFile(file, id) {
     var promises = [];
     console.log("Uploading started.");
     console.time("upload");
-
+    
     while (chunk = FileChunk.shift()) {
         PartCount++;
         // file name convention
         //var FilePartName = file.name + ".part_" + PartCount + "." + TotalParts;
         var FilePartName = PartCount;
         // send the file
-        promises.push(uploadFileChunk(id, chunk, FilePartName));
+        promises.push(UploadFileChunk(id,chunk, FilePartName));
     }
     $.when.apply(this, promises).then(function (responses) {
         // Each argument is an array with the following structure: [ data, statusText, jqXHR ]
@@ -50,21 +50,23 @@ function uploadFile(file, id) {
         console.time("merge");
         mergeFiles(id, file.name).then(function (response) {
             console.timeEnd("merge");
-            console.timeEnd("upload - readSyncInWorkerAndSendviaWebAPI");
+            console.timeEnd("upload - readAsyncAndSendAsMultiPartFormDataviaWebAPI");
             document.getElementById('upload-dialog').close();
             alert('Upload and merge done');
         });
     });
 }
 function mergeFiles(id, name) {
-    return $.get(uploadConfigurations.rootUrl + `/api/upload/merge/${id}/${name}/`);
+    return $.get(uploadConfigurations.rootUrl  +  `/api/upload/merge/${id}/${name}/`);
 }
-function uploadFileChunk(id, Chunk, FileName) {
+function UploadFileChunk(id,Chunk, FileName) {
+    var FD = new FormData();
+    FD.append('file', Chunk, FileName);
     return $.ajax({
         type: "POST",
-        url: uploadConfigurations.rootUrl + '/api/files/' + id + '/' + FileName,
+        url: uploadConfigurations.rootUrl +'/api/upload/'+ id,
         contentType: false,
         processData: false,
-        data: Chunk
+        data: FD
     });
 }

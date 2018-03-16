@@ -133,8 +133,9 @@
     <Content Include="JS\socketSyncUploaderWorker.js" />
     <Content Include="JS\uploadWebAPI.js" />
     <Content Include="JS\uploadUI.js" />
-    <Content Include="JS\webAPIUploaderWorker.js" />
     <Content Include="JS\webAPIUploader.js" />
+    <Content Include="JS\webAPIUploaderWorker.js" />
+    <Content Include="JS\webAPIMultiPartUploader.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />

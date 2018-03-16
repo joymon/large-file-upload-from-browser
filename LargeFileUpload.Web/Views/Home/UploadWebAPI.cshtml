@@ -6,17 +6,20 @@
 
 <div class="jumbotron">
     <div class="container">
-        <h2>Upload using multipart/form-data to ASP.Net WebAPI</h2>
+        <h2>Upload using ASP.Net WebAPI</h2>
         <form id="upload-form" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="uploadFile">Select File</label>
                 <input type="file" class="form-control" id="uploadFile" name="uploadFile" accept="image/*;capture=camera" />
             </div>
             <div class="form-group">
-                <label for="location">Async file reading</label>
+                <label for="location">Multipart/Formdata format?</label>
+                <input type="checkbox" id="multipartCheckBox" class="form-check-input" />
+
+                <label for="location">Async file reading?</label>
                 <input type="checkbox" id="fileReadingCheckBox" class="form-check-input" />
             </div>
-            <button id="submit" type="submit" class="btn btn-default">Submit Image</button>
+            <button id="submit" type="submit" class="btn btn-default">Submit</button>
         </form>
     </div>
 </div>
@@ -28,3 +31,4 @@
 <script type="text/javascript" src="~/JS/uploadWebAPI.js"></script>
 <script type="text/javascript" src="~/JS/webAPIUploader.js"></script>
 <script type="text/javascript" src="~/JS/webAPIUploaderWorker.js"></script>
+<script type="text/javascript" src="~/JS/webAPIMultiPartUploader.js"></script>
