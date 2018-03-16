@@ -1,21 +1,34 @@
 ﻿<div class="jumbotron">
     <div class="container">
-        <form id="upload-form" method="POST" enctype="multipart/form-data">
+
+        <h2>Upload using traditional HTML file control.</h2>
+        @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
             <div class="form-group">
                 <label for="uploadFile">Select File</label>
-                <input type="file" class="form-control" id="uploadFile" name="uploadFile" accept="image/*;capture=camera" />
-                
+                <input type="file" class="form-control" id="uploadFile" name="file"
+                       accept="image/*;capture=camera" />
+
             </div>
-            
+
             <div class="form-group">
                 <label for="location">Async file reading</label>
-                <input type="checkbox" id="fileReadingCheckBox" class="form-check-input" checked="checked"/>
+                <input type="checkbox" id="fileReadingCheckBox" class="form-check-input" checked="checked" />
             </div>
-            <button id="submit" type="submit" class="btn btn-default">Submit Image</button>
-        </form>
+            <button id="submit" type="submit" class="btn btn-default">Submit</button>
+        }
+        Pros
+        <ol>
+            <li>Simple</li>
+        </ol>
+        Cons
+        <ol>
+            <li>No chunking</li>
+            <li>Often hit by the payload limits of web servers.</li>
+        </ol>
     </div>
 </div>
-<script type="text/javascript" src="~/JS/seqSocket.js"></script>
-<script type="text/javascript" src="~/JS/uploadUI.js"></script>
-<script type="text/javascript" src="~/JS/socketSyncUploader.js"></script>
-<script type="text/javascript" src="~/JS/socketSyncUploaderWorker.js"></script>
+@*<script type="text/javascript" src="~/JS/seqSocket.js"></script>
+    <script type="text/javascript" src="~/JS/uploadUI.js"></script>
+    <script type="text/javascript" src="~/JS/socketSyncUploader.js"></script>
+    <script type="text/javascript" src="~/JS/socketSyncUploaderWorker.js"></script>*@

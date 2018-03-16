@@ -124,6 +124,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\prdcur.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="JS\configurations.js" />
@@ -156,6 +157,7 @@
     <Compile Include="Common\Configurations.cs" />
     <Compile Include="Common\FileMerger.cs" />
     <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Repositories\Database.cs" />
@@ -179,6 +181,7 @@
     <Content Include="Views\Home\Upload.cshtml" />
     <Content Include="Views\Home\Image.cshtml" />
     <Content Include="Views\Home\UploadWebAPI.cshtml" />
+    <Content Include="Views\Home\UploadWebSocket.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

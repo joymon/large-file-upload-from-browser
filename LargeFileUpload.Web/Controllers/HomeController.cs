@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using PrDCOldApp.Web.Models;
+using System.Web;
 
 namespace PrDCOldApp.Web.Controllers
 {
@@ -33,6 +34,24 @@ namespace PrDCOldApp.Web.Controllers
         }
 
         public ActionResult Upload()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Upload(HttpPostedFileBase file)
+        {
+            if (file != null && file.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var folderPhysicalPath = Path.Combine(Configurations.UploadsFolder, Guid.NewGuid().ToString());
+                IOWrapper.CreateFolderIfNotExists(folderPhysicalPath);
+                var path = Path.Combine(folderPhysicalPath, fileName);
+                file.SaveAs(path);
+            }
+
+            return View();
+        }
+        public ActionResult UploadWebSocket()
         {
             return View();
         }

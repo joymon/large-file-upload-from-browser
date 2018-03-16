@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "UploadWebSocket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <div class="container">
+        <h2>Upload using HTML5 WebSockets ASP.Net WebAPI</h2> 
+        <form id="upload-form" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="uploadFile">Select File</label>
+                <input type="file" class="form-control" id="uploadFile" name="uploadFile" accept="image/*;capture=camera" />
+
+            </div>
+
+            <div class="form-group">
+                <label for="location">Async file reading</label>
+                <input type="checkbox" id="fileReadingCheckBox" class="form-check-input" checked="checked" />
+            </div>
+            <button id="submit" type="submit" class="btn btn-default">Submit Image</button>
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="~/JS/seqSocket.js"></script>
+<script type="text/javascript" src="~/JS/uploadUI.js"></script>
+<script type="text/javascript" src="~/JS/socketSyncUploader.js"></script>
+<script type="text/javascript" src="~/JS/socketSyncUploaderWorker.js"></script>

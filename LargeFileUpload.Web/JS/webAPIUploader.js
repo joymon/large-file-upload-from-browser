@@ -1,6 +1,6 @@
 ﻿function readSyncInWorkerAndSendviaWebAPI(file) {
 
-    $.get("http://localhost/LargeFileUploadWithChunking/api/upload/new", (data, status) => {
+    $.get(uploadConfigurations.rootUrl + "/api/upload/new", (data, status) => {
         //alert(data);
         UploadFile(file, data);
     }
@@ -57,14 +57,14 @@ function UploadFile(file,id) {
     });
 }
 function mergeFiles(id, name) {
-    return $.get(`http://localhost/LargeFileUploadWithChunking/api/upload/merge/${id}/${name}/`);
+    return $.get(uploadConfigurations.rootUrl  +  `/api/upload/merge/${id}/${name}/`);
 }
 function UploadFileChunk(id,Chunk, FileName) {
     var FD = new FormData();
     FD.append('file', Chunk, FileName);
     return $.ajax({
         type: "POST",
-        url: 'http://localhost/LargeFileUploadWithChunking/api/upload/'+ id,
+        url: uploadConfigurations.rootUrl +'/api/upload/'+ id,
         contentType: false,
         processData: false,
         data: FD
