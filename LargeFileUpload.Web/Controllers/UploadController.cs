@@ -51,7 +51,7 @@ namespace PrDCOldApp.Web.Controllers
         public Guid UploadNew()
         {
             Guid newGuid = Guid.NewGuid();
-            CreateFolderInUploads(newGuid);
+            FileManager.CreateFolderInUploads(newGuid);
             return newGuid;
         }
 
@@ -176,11 +176,7 @@ namespace PrDCOldApp.Web.Controllers
         //    return rslt;
         //}
         #region Helpers
-        private void CreateFolderInUploads(Guid newGuid)
-        {
-            var path = Path.Combine(Configurations.UploadsFolder, newGuid.ToString());
-            IOWrapper.CreateFolderIfNotExists(path);
-        }
+       
         #endregion
     }
 

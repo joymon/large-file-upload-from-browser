@@ -21,6 +21,7 @@
     <IISExpressUseClassicPipelineMode />
     <Use64BitIISExpress />
     <UseGlobalApplicationHostFile />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,6 +56,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -116,6 +120,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="FilesService.svc" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -131,8 +136,10 @@
     <Content Include="JS\socketSyncUploader.js" />
     <Content Include="JS\seqSocket.js" />
     <Content Include="JS\socketSyncUploaderWorker.js" />
+    <Content Include="JS\uploadWCF.js" />
     <Content Include="JS\uploadWebAPI.js" />
     <Content Include="JS\uploadUI.js" />
+    <Content Include="JS\wcfMultiPartUploader.js" />
     <Content Include="JS\webAPIUploader.js" />
     <Content Include="JS\webAPIUploaderWorker.js" />
     <Content Include="JS\webAPIMultiPartUploader.js" />
@@ -156,11 +163,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common\Configurations.cs" />
+    <Compile Include="Common\FileManager.cs" />
     <Compile Include="Common\FileMerger.cs" />
+    <Compile Include="Common\MultipartParser.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
+    <Compile Include="FilesService.svc.cs">
+      <DependentUpon>FilesService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\Database.cs" />
     <Compile Include="Common\IOWrapper.cs" />
     <Compile Include="Models\UploadEntry.cs" />
@@ -183,6 +195,7 @@
     <Content Include="Views\Home\Image.cshtml" />
     <Content Include="Views\Home\UploadWebAPI.cshtml" />
     <Content Include="Views\Home\UploadWebSocket.cshtml" />
+    <Content Include="Views\Home\UploadWCF.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

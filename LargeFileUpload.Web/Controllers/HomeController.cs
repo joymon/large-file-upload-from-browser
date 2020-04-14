@@ -59,6 +59,10 @@ namespace PrDCOldApp.Web.Controllers
         {
             return View();
         }
+        public ActionResult UploadWCF()
+        {
+            return View();
+        }
         public ActionResult Delete(string id)
         {
 
